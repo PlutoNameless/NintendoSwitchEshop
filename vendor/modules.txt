@@ -1,0 +1,4 @@
+# github.com/pariz/gountries v0.0.0-20171019111738-adb00f6513a3
+github.com/pariz/gountries
+# gopkg.in/yaml.v2 v2.2.2
+gopkg.in/yaml.v2
