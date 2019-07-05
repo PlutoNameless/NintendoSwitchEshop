@@ -1,4 +1,4 @@
-package nsEshop
+package NintendoSwitchEshop
 
 import (
 	"encoding/json"
