@@ -9,13 +9,13 @@ import (
 	"strconv"
 )
 
-func (c *Client) GetGamesJapan() ([]GameJapan, error) {
-	currentGamesRes, err := c.sendNewRequest(JP_GET_GAMES_CURRENT)
+func GetGamesJapan() ([]GameJapan, error) {
+	currentGamesRes, err := sendNewRequest(JP_GET_GAMES_CURRENT)
 	if err != nil {
 		return nil, err
 	}
 
-	comingGamesRes, err := c.sendNewRequest(JP_GET_GAMES_COMING)
+	comingGamesRes, err := sendNewRequest(JP_GET_GAMES_COMING)
 	if err != nil {
 		return nil, err
 	}
@@ -35,7 +35,7 @@ func (c *Client) GetGamesJapan() ([]GameJapan, error) {
 	return append(currentGames.Games, comingGames.Games...), nil
 }
 
-func (c *Client) GetGamesEurope(limit int) ([]GameEurope, error) {
+func GetGamesEurope(limit int) ([]GameEurope, error) {
 	if limit < 1 {
 		limit = 1
 	}
@@ -61,7 +61,7 @@ func (c *Client) GetGamesEurope(limit int) ([]GameEurope, error) {
 
 	u.RawQuery = query.Encode()
 
-	europeGamesRes, err := c.sendNewRequest(u.String())
+	europeGamesRes, err := sendNewRequest(u.String())
 	if err != nil {
 		return nil, err
 	}
@@ -75,7 +75,7 @@ func (c *Client) GetGamesEurope(limit int) ([]GameEurope, error) {
 	return europeGames.Response.Games, nil
 }
 
-func (c *Client) GetPrices(country string, gameIds []string) (pr PriceResponse, err error) {
+func GetPrices(country string, gameIds []string) (pr PriceResponse, err error) {
 	if len(gameIds) == 0 {
 		return pr, errors.New("gameIds is nil")
 	}
@@ -101,7 +101,7 @@ func (c *Client) GetPrices(country string, gameIds []string) (pr PriceResponse, 
 
 	u.RawQuery = query.Encode()
 
-	priceDataRes, err := c.sendNewRequest(u.String())
+	priceDataRes, err := sendNewRequest(u.String())
 	if err != nil {
 		return pr, err
 	}

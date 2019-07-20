@@ -3,8 +3,7 @@ package NintendoSwitchEshop
 import "testing"
 
 func TestClient_GetGamesJapan(t *testing.T) {
-	c := NewClient(nil)
-	res, err := c.GetGamesJapan()
+	res, err := GetGamesJapan()
 	if err != nil {
 		t.Error(err)
 	}
@@ -13,8 +12,7 @@ func TestClient_GetGamesJapan(t *testing.T) {
 }
 
 func TestClient_GetGamesEurope(t *testing.T) {
-	c := NewClient(nil)
-	res, err := c.GetGamesEurope(3)
+	res, err := GetGamesEurope(3)
 	if err != nil {
 		t.Error(err)
 	}
@@ -23,8 +21,7 @@ func TestClient_GetGamesEurope(t *testing.T) {
 }
 
 func TestClient_GetPrices(t *testing.T) {
-	c := NewClient(nil)
-	res, err := c.GetPrices("US", []string{"70010000002344", "70010000000185", "70010000020291"})
+	res, err := GetPrices("US", []string{"70010000002344", "70010000000185", "70010000020291"})
 	if err != nil {
 		t.Error(err)
 	}
